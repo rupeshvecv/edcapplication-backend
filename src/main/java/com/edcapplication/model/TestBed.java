@@ -21,9 +21,6 @@ public class TestBed {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
-	@OneToMany(mappedBy = "testBed", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<BDRREntry> bdrrEntries;
-	
 	@Column(name= "testbed_name")
 	private String name;
 
@@ -43,14 +40,6 @@ public class TestBed {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public List<BDRREntry> getBdrrEntries() {
-		return bdrrEntries;
-	}
-
-	public void setBdrrEntries(List<BDRREntry> bdrrEntries) {
-		this.bdrrEntries = bdrrEntries;
 	}
 
 	public String getName() {
