@@ -36,7 +36,7 @@ public class BDRREntry {
 	private String shift;
 	
 	@ManyToOne
-    @JoinColumn(name = "testbed_id")  // FK column in bdrr_entry table
+    @JoinColumn(name = "testbed_id")  //FK column in bdrr_entry table
     private TestBed testBed;
 	
 	@OneToOne

@@ -1,9 +1,6 @@
 package com.edcapplication.model;
 
 import java.time.LocalDate;
-
-import com.empoweredge.model.User;
-
 import jakarta.persistence.*;
 
 @Entity
@@ -23,13 +20,8 @@ public class Project {
     @Column(name = "status")
     private String status;
 
-    @ManyToOne
-    @JoinColumn(
-        name = "project_owner",
-        referencedColumnName = "id",
-        foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT) //don’t auto-generate FK
-    )
-    private User projectOwner;
+    @Column(name = "project_owner")
+    private String projectOwner;
     
     @Column(name = "project_start_date")
     private LocalDate projectStartDate;
@@ -40,7 +32,7 @@ public class Project {
     public Project() {}
 
     public Project(int id, String projectCode, String description, String status, 
-                   User projectOwner, LocalDate projectStartDate, LocalDate projectEndDate) {
+    		String projectOwner, LocalDate projectStartDate, LocalDate projectEndDate) {
         this.id = id;
         this.projectCode = projectCode;
         this.description = description;
@@ -63,8 +55,8 @@ public class Project {
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
 
-    public User getProjectOwner() { return projectOwner; }
-    public void setProjectOwner(User projectOwner) { this.projectOwner = projectOwner; }
+    public String getProjectOwner() { return projectOwner; }
+    public void setProjectOwner(String projectOwner) { this.projectOwner = projectOwner; }
 
     public LocalDate getProjectStartDate() { return projectStartDate; }
     public void setProjectStartDate(LocalDate projectStartDate) { this.projectStartDate = projectStartDate; }
@@ -72,10 +64,11 @@ public class Project {
     public LocalDate getProjectEndDate() { return projectEndDate; }
     public void setProjectEndDate(LocalDate projectEndDate) { this.projectEndDate = projectEndDate; }
 
-    @Override
-    public String toString() {
-        return "Project [id=" + id + ", projectCode=" + projectCode + ", description=" + description
-                + ", status=" + status + ", projectOwner=" + (projectOwner != null ? projectOwner.getId() : null)
-                + ", projectStartDate=" + projectStartDate + ", projectEndDate=" + projectEndDate + "]";
-    }
+	@Override
+	public String toString() {
+		return "Project [id=" + id + ", projectCode=" + projectCode + ", description=" + description + ", status="
+				+ status + ", projectOwner=" + projectOwner + ", projectStartDate=" + projectStartDate
+				+ ", projectEndDate=" + projectEndDate + "]";
+	}
+
 }
