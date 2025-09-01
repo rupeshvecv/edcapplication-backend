@@ -30,7 +30,7 @@ public class EquipmentController {
 	 * equipmentService.getEquipments(); }
 	 */
 
-	@GetMapping
+	@GetMapping("/equipments")
     public List<EquipmentDao> getEquipments() {
         return equipmentService.getAllEquipments();
     }

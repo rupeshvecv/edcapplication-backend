@@ -1,115 +1,74 @@
 package com.edcapplication.model;
 
 import java.time.LocalDate;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name="project_table") 
+@Table(name = "project_table", schema = "edcapplication")
 public class Project {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
-	
-	@Column(name= "project_code")
-	private String projectCode;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
-	@Column(name= "description")
-	private String description;
-	
-	@Column(name= "status")
-	private String status;
-	
-	@Column(name= "project_owner")
-	private String projectOwner;
-	
-	@Column(name= "project_start_date")
-	private LocalDate projectStartDate;
-	
-	@Column(name= "project_end_date")
-	private LocalDate projectEndDate;
-	
-	public Project() {
-		super();
-	}
+    @Column(name = "project_code")
+    private String projectCode;
 
-	public Project(int id, String projectCode, String description, String status, String projectOwner,
-			LocalDate projectStartDate, LocalDate projectEndDate) {
-		super();
-		this.id = id;
-		this.projectCode = projectCode;
-		this.description = description;
-		this.status = status;
-		this.projectOwner = projectOwner;
-		this.projectStartDate = projectStartDate;
-		this.projectEndDate = projectEndDate;
-	}
+    @Column(name = "description")
+    private String description;
 
-	public int getId() {
-		return id;
-	}
+    @Column(name = "status")
+    private String status;
 
+    @Column(name = "project_owner")
+    private String projectOwner;
+    
+    @Column(name = "project_start_date")
+    private LocalDate projectStartDate;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    @Column(name = "project_end_date")
+    private LocalDate projectEndDate;
 
-	public String getProjectCode() {
-		return projectCode;
-	}
+    public Project() {}
 
-	public void setProjectCode(String projectCode) {
-		this.projectCode = projectCode;
-	}
+    public Project(int id, String projectCode, String description, String status, 
+    		String projectOwner, LocalDate projectStartDate, LocalDate projectEndDate) {
+        this.id = id;
+        this.projectCode = projectCode;
+        this.description = description;
+        this.status = status;
+        this.projectOwner = projectOwner;
+        this.projectStartDate = projectStartDate;
+        this.projectEndDate = projectEndDate;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    //getters & setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public String getProjectCode() { return projectCode; }
+    public void setProjectCode(String projectCode) { this.projectCode = projectCode; }
 
-	public String getStatus() {
-		return status;
-	}
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
 
-	public String getProjectOwner() {
-		return projectOwner;
-	}
+    public String getProjectOwner() { return projectOwner; }
+    public void setProjectOwner(String projectOwner) { this.projectOwner = projectOwner; }
 
-	public void setProjectOwner(String projectOwner) {
-		this.projectOwner = projectOwner;
-	}
+    public LocalDate getProjectStartDate() { return projectStartDate; }
+    public void setProjectStartDate(LocalDate projectStartDate) { this.projectStartDate = projectStartDate; }
 
-	public LocalDate getProjectStartDate() {
-		return projectStartDate;
-	}
+    public LocalDate getProjectEndDate() { return projectEndDate; }
+    public void setProjectEndDate(LocalDate projectEndDate) { this.projectEndDate = projectEndDate; }
 
-	public void setProjectStartDate(LocalDate projectStartDate) {
-		this.projectStartDate = projectStartDate;
-	}
-
-	public LocalDate getProjectEndDate() {
-		return projectEndDate;
-	}
-
-	public void setProjectEndDate(LocalDate projectEndDate) {
-		this.projectEndDate = projectEndDate;
-	}
-	
 	@Override
 	public String toString() {
-		return "Project [id=" + id + ", projectCode=" + projectCode+ ", description=" + description+ ", status=" + status+ ", projectOwner=" + projectOwner+ ", projectStartDate=" + projectStartDate+ ", projectEndDate=" + projectEndDate +"]";
+		return "Project [id=" + id + ", projectCode=" + projectCode + ", description=" + description + ", status="
+				+ status + ", projectOwner=" + projectOwner + ", projectStartDate=" + projectStartDate
+				+ ", projectEndDate=" + projectEndDate + "]";
 	}
+
 }

@@ -19,11 +19,15 @@ private TestBedRepository testBedRepository;
 	}
 	
 	public List<TestBed> getAllTestBeds() {
-		//return (List<TestBed>) testBedRepository.findAll();
+		return (List<TestBed>) testBedRepository.findAll();
 		
-		List<TestBed> testBeds = (List<TestBed>) testBedRepository.findAll();
-		testBeds.forEach(tb -> tb.getBdrrEntries().size());
-		return testBeds;
+		/*
+		 * List<TestBed> testBeds = (List<TestBed>) testBedRepository.findAll();
+		 * testBeds.forEach(tb -> tb.getBdrrEntries().size());
+		 *return testBeds;
+		 */
+		
+		//return testBedRepository.findAll();
 	}
 	
 	/*public TestBed getTestBedById(Integer id) {
@@ -38,11 +42,12 @@ private TestBedRepository testBedRepository;
     }
 	
 	public TestBed addTestBed(TestBed testBed) {
-	   testBed.setId(0);
-	   if (testBed.getBdrrEntries() != null) {
-		   testBed.getBdrrEntries().forEach(entry -> entry.setTestBed(testBed));
-	   }
-	   return testBedRepository.save(testBed);
+		/*
+		 * testBed.setId(0); if (testBed.getBdrrEntries() != null) {
+		 * testBed.getBdrrEntries().forEach(entry -> entry.setTestBed(testBed)); }
+		 * return testBedRepository.save(testBed);
+		 */
+		return testBedRepository.save(testBed);
 	}
 	
 	//Update an existing TestBed
@@ -52,15 +57,14 @@ private TestBedRepository testBedRepository;
 
         existing.setName(updatedTestBed.getName());
 
-        //Update bdrrEntries safely
-        if (updatedTestBed.getBdrrEntries() != null) {
-            // Remove old ones
-            existing.getBdrrEntries().clear();
-
-            // Add new ones and link back
-            updatedTestBed.getBdrrEntries().forEach(entry -> entry.setTestBed(existing));
-            existing.getBdrrEntries().addAll(updatedTestBed.getBdrrEntries());
-        }
+		/*
+		 * //Update bdrrEntries safely if (updatedTestBed.getBdrrEntries() != null) { //
+		 * Remove old ones existing.getBdrrEntries().clear();
+		 * 
+		 * // Add new ones and link back updatedTestBed.getBdrrEntries().forEach(entry
+		 * -> entry.setTestBed(existing));
+		 * existing.getBdrrEntries().addAll(updatedTestBed.getBdrrEntries()); }
+		 */
 
         return testBedRepository.save(existing);
     }
